@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: sales
+        identifier : Has the sales data
+
+      - name: product
+        identifier : Has the product data
+      - name: ship
+        identifier : Has the ship data
