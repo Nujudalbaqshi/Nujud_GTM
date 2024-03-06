@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw_data
+    tables:
+      - name: sales
+        identifier : raw_gz_sales
+        description: Has the sales data
+      - name: product
+        identifier : raw_gz_product
+        description: Has the product data
+        columns:
+          - name: products_id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: ship
+        identifier : raw_gz_ship
+        description: Has the ship data
+        columns:
+          - name: orders_id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+
+              
