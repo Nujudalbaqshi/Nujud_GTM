@@ -7,15 +7,30 @@ sources:
       - name: sales
         identifier : raw_gz_sales
         description: Has the sales data
+        tests:
+          - unique:
+              column_name: "(orders_id || pdt_id)"
       - name: product
         identifier : raw_gz_product
-        description: Has the product data
+        description: Has the product 
         columns:
           - name: products_id
             description: Primary key of the table
             tests:
               - unique
               - not_null
+      - name: adwords
+        identifier : raw_gz_adwords
+        description: Has the adwords data
+      - name: bing
+        identifier : raw_gz_bing
+        description: Has the bing data
+      - name: criteo
+        identifier : raw_gz_criteo
+        description: Has the criteo data
+      - name: facebook
+        identifier : raw_gz_facebook
+        description: Has the facebook data
       - name: ship
         identifier : raw_gz_ship
         description: Has the ship data
@@ -25,5 +40,26 @@ sources:
             tests:
               - unique
               - not_null
-
-              
+      # - name: int_campaigns
+      #   description: data from all campaigns
+      #   tests:
+      #   - unique:
+      #     column_name: "(campaign_key || date_date)"
+      #   - not_null:
+      #     column_name:
+      #       - paid_source
+      #       - campgn_name
+models:
+  - name: finance_campaigns_day
+    description: global kpi
+    columns:
+      - name: ads_margin
+        description: operational_margin - ads_cost
+      - name: average_basket
+        description: average basket cost for each day 
+    tests:
+      - not_null:
+          column_name:
+            - ads_margin
+            - average_basket
+            
